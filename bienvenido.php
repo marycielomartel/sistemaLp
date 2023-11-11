@@ -7,7 +7,7 @@
 
  
 ?>
-<h1>Hola, bienvenido <?php echo $_SESSION["usuario"]; ?></h1>
+<h1>Hola, bienvenido, pruebaaaaaaaaaaa <?php echo $_SESSION["usuario"]; ?></h1>
 <ul>
     <?php
     if($_SESSION["tipo"]=="administrador"){
