@@ -1,4 +1,6 @@
 <?php
+require_once("Controladores/reservaControlador.php");
+
   session_start();
   if(!isset($_SESSION["usuario"])){
     header("location: login.php");
@@ -7,10 +9,14 @@
   header("location: bienvenido.php");
 }
 
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
+  $reservaControlador = new ReservaControlador();
+  $reservaControlador->eliminar($id);
+}
+
 ?>
-<?php
-    require_once("Controladores/ReservaControlador.php");
-?>
+
 <h1>Reservas</h1>
 <table border=1>
     <tr>
@@ -19,6 +25,7 @@
         <th>Fecha de Inicio</th>
         <th>Fecha de Fin</th>
         <th>Horarios</th>
+        <th>Acciones</th>
     </tr>
     <?php
         $reservaControlador = new ReservaControlador();
@@ -30,6 +37,9 @@
                     <td>".$reserva["fechaInicio"]."</td>
                     <td>".$reserva["fechaFin"]."</td>
                     <td>".$reserva["horarios"]."</td>
+                    <td>
+                    <a href='mostrarReserva.php?id=".$reserva['id']."'>Eliminar</a>
+                    </td>
                   </tr>";
         }
     ?>
