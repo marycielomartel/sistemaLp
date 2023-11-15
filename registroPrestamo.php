@@ -4,7 +4,7 @@
     header("location: login.php");
     exit; 
   }
-  if($_SESSION["tipo"]=="alumno"){
+  if($_SESSION["tipo"]!="alumno"){
   header("location: bienvenido.php");
   exit;
 
