@@ -25,4 +25,15 @@ class InventarioControlador{
         $inventario = new Inventario();
         return $inventario->traerTodo();        
     }
+
+    public function eliminar($id){
+        $inventario = new Inventario();
+        $resultado=$inventario->eliminar($id);
+        if($resultado!=0){
+            echo "Equipo Eliminado";
+        }else{
+            echo "Error";
+        }
+
+    }
 }

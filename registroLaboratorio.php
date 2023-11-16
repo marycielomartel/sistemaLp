@@ -3,7 +3,7 @@
   if(!isset($_SESSION["usuario"])){
     header("location: login.php");
   }
-  if($_SESSION["tipo"]=="administrador"){
+  if($_SESSION["tipo"]!="administrador"){
   header("location: bienvenido.php");
 }
 

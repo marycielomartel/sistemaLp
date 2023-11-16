@@ -4,7 +4,7 @@
     header("location: login.php");
     exit;
   }
-  if($_SESSION["tipo"]=="administrador"){
+  if($_SESSION["tipo"]!="administrador"){
   header("location: bienvenido.php");
   exit;
 }
