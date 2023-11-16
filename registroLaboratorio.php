@@ -12,8 +12,9 @@
     <input type="text" name="nombre" placeholder="Ingrese nombre del laboratorio"/><br>
     <input type="text" name="descripcion" placeholder="Ingrese la descripcion del laboratorio"/><br>
     <input type="text" name="estado" placeholder="Ingrese el estado del laboratorio"/><br>
-    <input type="number" name="idInventario" placeholder="Ingrese el id de inventario"/><br>
-    <input type="submit" value="Guardar"/><br>
+    <input type="number" name="idInventario" placeholder="Ingrese el id de inventario"/><br><br>
+    <input type="submit" value="Guardar"/><br><br>
+    <a href="bienvenido.php">Regresar</a>
 </form>
 
 <?php

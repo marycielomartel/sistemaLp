@@ -32,5 +32,7 @@ class LaboratorioControlador{
         $laboratorio = new Laboratorio();
         return $laboratorio->traerTodo();        
     }
+
+    
 }
 

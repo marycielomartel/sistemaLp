@@ -11,7 +11,7 @@ class Conn{
     {
         $this->dsn = "mysql:host=localhost;dbname=bd_inventario";
         $this->usuario = "root";
-        $this->pass = "marycielo";
+        $this->pass = "";
     }
 
     public function conectar(){

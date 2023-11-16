@@ -12,7 +12,7 @@
         session_start();
         $_SESSION["usuario"]= $usuario;
         $_SESSION["id"]= 125 ;
-        $_SESSION["tipo"]= "alumno" ;
+        $_SESSION["tipo"]= "administrador" ;
         header("location: bienvenido.php");
         exit;
     }

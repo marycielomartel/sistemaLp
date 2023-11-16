@@ -9,6 +9,7 @@
         <th>Descripcion</th>
         <th>Estado</th>
         <th>Id Inventario</th>
+        <th>Acciones</th>
     </tr>
     <?php
         $laboratorioControlador = new LaboratorioControlador();
@@ -19,7 +20,13 @@
                     <td>".$laboratorio["descripcion"]."</td>
                     <td>".$laboratorio["estado"]."</td>
                     <td>".$laboratorio["idInventario"]."</td>
+                    <td>
+                        <a href='editarLaboratorio.php?id=".$laboratorio["id"]."'>Editar</a>
+                        <a href='eliminar_laboratorio.php?id=".$laboratorio["id"]."'>Eliminar</a>
+                    </td>
                   </tr>";
         }
     ?>
 </table>
+<br>
+        <a href="bienvenido.php">Regresar</a>
