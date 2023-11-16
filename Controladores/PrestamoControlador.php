@@ -38,4 +38,15 @@ class PrestamoControlador{
         $prestamo = new Prestamo();
         return $prestamo->traerTodo();        
     }
+
+    public function eliminar($id){
+        $prestamo = new Prestamo();
+        $resultado=$prestamo->eliminar($id);
+        if($resultado!=0){
+            echo "Prestamo Eliminado";
+        }else{
+            echo "Error";
+        }
+
+    }
 }

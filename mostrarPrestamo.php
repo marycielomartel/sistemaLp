@@ -20,6 +20,7 @@
         <th>Fecha Inicio</th>
         <th>Fecha Devolucion</th>
         <th>Observaciones</th>
+        <th>Acciones</th>
     </tr>
     <?php
         $prestamoControlador = new PrestamoControlador();
@@ -32,6 +33,7 @@
                     <td>".$prestamo["fechaInicio"]."</td>
                     <td>".$prestamo["fechaDevolucion"]."</td>
                     <td>".$prestamo["observaciones"]."</td>
+                    <a href='mostrarPrestamo.php?id=".$prestamo['id']."'>Eliminar</a>
                   </tr>";
         }
     ?>

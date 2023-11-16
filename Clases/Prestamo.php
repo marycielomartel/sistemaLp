@@ -77,4 +77,14 @@ class Prestamo{
 
         return $resultado;
     }
+
+    public function eliminar($id){
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+        $sql2="DELETE FROM prestamo WHERE id='$id'";
+        $resultado =  $conexion->query($sql2);
+        $conn->cerrar();
+       
+        return $resultado;
+    }
 }
