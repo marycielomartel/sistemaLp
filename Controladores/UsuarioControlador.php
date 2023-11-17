@@ -48,13 +48,15 @@ class UsuarioControlador{
         return $respuesta;
     }
 
-        public function login(String $usuario2, $contraseña){
+    public function login(String $usuario2, $contraseña){
         $usuario = new Usuario();
         $resultado = $usuario->traerUsuario($usuario2);
 
         foreach($resultado as $user){
             $username = $user["username"];
             $password = $user["contraseña"];
+            $id = $user["id"];
+            $rol = $user["rol"];
         }
         if(isset($username)){
             if(password_verify($contraseña, $password)){

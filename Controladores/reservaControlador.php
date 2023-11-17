@@ -35,4 +35,14 @@ class ReservaControlador{
         $reserva = new Reserva();
         return $reserva->traerTodo();        
     }
+    public function eliminar($id){
+        $reserva = new Reserva();
+        $resultado=$reserva->eliminar($id);
+        if($resultado!=0){
+            echo "Reserva Eliminada";
+        }else{
+            echo "Error";
+        }
+
+    }
 }
