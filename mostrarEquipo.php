@@ -26,9 +26,6 @@
                     <td>".$equipo["nombre"]."</td>
                     <td>".$equipo["descripcion"]."</td>
                     <td>".$equipo["estado"]."</td>
-                    <td>
-                    <a href='mostrarEquipo.php?id=".$equipo['id']."'>Eliminar</a>
-                    </td>
                   </tr>";
         }
     ?>
