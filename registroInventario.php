@@ -3,10 +3,10 @@
   if(!isset($_SESSION["usuario"])){
     header("location: login.php");
   }
-  if($_SESSION["tipo"]!="administrador"){
+  if($_SESSION["rol"]!="administrador"){
   header("location: bienvenido.php");
 }
-
+include_once("layout/Header.php");
 ?>
 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
     <input type="text" name="nombre" placeholder="Ingrese nombre del equipo"/><br>

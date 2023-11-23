@@ -78,4 +78,26 @@ class Reserva{
     
         return $resultado;
     }
+    public function eliminar($id) {
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+        $sql2 = "DELETE FROM reserva WHERE id='$id'";
+        $resultado = $conexion->exec($sql2);
+        $conn->cerrar();
+        
+        if ($resultado !== false) {
+            return true; // Éxito
+        } else {
+            return false; // Error
+        }
+    }
+    public function traerLab(){
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+        $sql2 = "SELECT id, nombre FROM laboratorio";
+        $resultado = $conexion->query($sql2);
+        $conn->cerrar();
+    
+        return $resultado;
+    }
 }

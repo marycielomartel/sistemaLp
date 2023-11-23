@@ -4,11 +4,11 @@
     header("location: login.php");
     exit;
   }
-  if($_SESSION["tipo"]!="administrador"){
+  if($_SESSION["rol"]!="administrador"){
   header("location: bienvenido.php");
   exit;
 }
-
+include_once("layout/Header.php");
 ?>
 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
     <input type="text" name="nombre" placeholder="Ingrese nombre del equipo"/><br>
