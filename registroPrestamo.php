@@ -1,16 +1,4 @@
-<?php
-  session_start();
-  if(!isset($_SESSION["usuario"])){
-    header("location: login.php");
-    exit; 
-  }
-  if($_SESSION["tipo"]!="alumno"){
-  header("location: bienvenido.php");
-  exit;
 
-}
-
-?>
 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
     <input type="number" name="idUsuario" placeholder="Ingrese el id de usuario"/><br>
     <input type="number" name="idEquipo" placeholder="Seleccione el id del equipo"/><br>

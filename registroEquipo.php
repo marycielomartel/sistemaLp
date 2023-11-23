@@ -1,15 +1,4 @@
-<?php
-  session_start();
-  if(!isset($_SESSION["usuario"])){
-    header("location: login.php");
-    exit;
-  }
-  if($_SESSION["tipo"]!="administrador"){
-  header("location: bienvenido.php");
-  exit;
-}
 
-?>
 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
     <input type="text" name="nombre" placeholder="Ingrese nombre del equipo"/><br>
     <input type="text" name="descripcion" placeholder="Ingrese la descripcion del equipo"/><br>
