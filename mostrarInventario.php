@@ -1,4 +1,13 @@
+<?php
+  session_start();
+  if(!isset($_SESSION["usuario"])){
+    header("location: login.php");
+  }
+  if($_SESSION["tipo"]!="administrador"){
+  header("location: bienvenido.php");
+}
 
+?>
 <?php
     require_once("Controladores/InventarioControlador.php");
 ?>
@@ -7,6 +16,7 @@
     <tr>
         <th>Nombre</th>
         <th>Descripcion</th>
+        <th>Acciones</th>
     </tr>
     <?php
         $inventarioControlador = new InventarioControlador();
@@ -15,6 +25,9 @@
             echo "<tr>
                     <td>".$inventario["nombre"]."</td>
                     <td>".$inventario["descripcion"]."</td>
+                    <td>
+                    <a href='mostrarInventario.php?id=".$inventario['id']."'>Eliminar</a>
+                    </td>
                   </tr>";
         }
     ?>

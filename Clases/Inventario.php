@@ -51,4 +51,18 @@ class Inventario{
     
         return $resultado;
     }
+
+    public function eliminar($id) {
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+        $sql2 = "DELETE FROM inventario WHERE id='$id'";
+        $resultado = $conexion->exec($sql2);
+        $conn->cerrar();
+        
+        if ($resultado !== false) {
+            return true; // Éxito
+        } else {
+            return false; // Error
+        }
+    }
 }

@@ -28,4 +28,17 @@ class EquipoControlador{
         $equipo = new Equipo();
         return $equipo->traerTodo();        
     }
+
+    public function eliminar($id){
+        $equipo = new Equipo();
+        $resultado=$equipo->eliminar($id);
+        if($resultado!=0){
+            echo "Equipo Eliminado";
+        }else{
+            echo "Error";
+        }
+
+    }
+
+
 }
