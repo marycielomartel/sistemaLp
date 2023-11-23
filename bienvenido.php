@@ -10,7 +10,7 @@
 <h1>Hola, bienvenido <?php echo $_SESSION["usuario"]; ?></h1>
 <ul>
     <?php
-    if($_SESSION["tipo"]=="administrador"){
+    if($_SESSION["tipo"]="administrador"){
     echo "<li><a href='registroInventario.php'>Registrar Inventario</a></li>";
     echo "<li><a href='mostrarInventario.php'>Mostrar Inventario</a></li>";
     echo "<li><a href='registroEquipo.php'>Registrar Equipo</a></li>";
