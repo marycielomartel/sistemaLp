@@ -6,7 +6,7 @@ class Laboratorio{
     private $nombre;
     private $descripcion;
     private $estado;
-    private $idInventario;
+    private $inventario;
     
 
 
@@ -41,20 +41,20 @@ class Laboratorio{
     public function setEstado(String $estado){
         $this->estado = $estado;
     }
-    public function getidInventario(){
-        return $this->idInventario;
+    public function getInventario(){
+        return $this->inventario;
     }
 
-    public function setidInventario(int $idInventario){
-        $this->idInventario = $idInventario;
+    public function setInventario(int $inventario){
+        $this->inventario = $inventario;
     }
 
 
   
-    public function guardar(String $nombre, String $descripcion, String $estado, int $idInventario){
+    public function guardar(String $nombre, String $descripcion, String $estado, String $inventario){
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql2 = "INSERT INTO laboratorio(nombre, descripcion, estado, idInventario) VALUES ('$nombre', '$descripcion','$estado','$idInventario')";
+        $sql2 = "INSERT INTO laboratorio(nombre, descripcion, estado, inventario) VALUES ('$nombre', '$descripcion','$estado','$inventario')";
         $resultado = $conexion->exec($sql2);
         $conn->cerrar();
     
@@ -84,14 +84,15 @@ class Laboratorio{
         return $laboratorioData;
     }
     
-        public function actualizar($id, $nombre, $descripcion,$estado){
+        public function actualizar($id, $nombre, $descripcion,$estado,$inventario){
             $conn = new Conn();
             $conexion = $conn->conectar();
-            $sql = "UPDATE laboratorio SET nombre = :nombre, descripcion = :descripcion, estado = :estado  WHERE id = :id";
+            $sql = "UPDATE laboratorio SET nombre = :nombre, descripcion = :descripcion, estado = :estado, inventario = :inventario  WHERE id = :id";
             $stmt = $conexion->prepare($sql);
             $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
             $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
             $stmt->bindParam(':estado', $estado, PDO::PARAM_STR);
+            $stmt->bindParam(':inventario', $inventario, PDO::PARAM_STR);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $resultado = $stmt->execute();
             $conn->cerrar();

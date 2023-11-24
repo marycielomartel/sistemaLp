@@ -7,7 +7,7 @@ require_once("Controladores/reservaControlador.php");
     header("location: login.php");
   }
   if($_SESSION["rol"]!="administrador"){
-  header("location: bienvenido.php");
+  header("location: index.php");
   
 }
  
@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
   $reservaControlador = new ReservaControlador();
   $reservaControlador->eliminar($id);
 }
-include_once("layout/Header.php");
+
 ?>
 
 <h1>Reservas</h1>

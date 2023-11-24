@@ -2,7 +2,7 @@
 require_once("Clases/Laboratorio.php");
 
 class LaboratorioControlador{
-    public function guardar(String $nombre, String $descripcion, String $estado, int $idInventario): String{
+    public function guardar(String $nombre, String $descripcion, String $estado, String $inventario): String{
         $respuesta="";
         if(trim($nombre)==""){
             $respuesta.="Complete el campo de nombre<br>";
@@ -13,14 +13,14 @@ class LaboratorioControlador{
         if(trim($estado)==""){
             $respuesta.="Complete el campo de estados<br>";
         } 
-        if(trim($idInventario)==""){
+        if(trim($inventario)==""){
             $respuesta.="Complete el campo de inventario<br>";
         } 
 
 
         $laboratorio = new Laboratorio();
 
-        if($laboratorio->guardar($nombre, $descripcion, $estado, $idInventario)>0){
+        if($laboratorio->guardar($nombre, $descripcion, $estado, $inventario)>0){
             $respuesta = "Laboratorio registrado";
         } 
 
@@ -46,9 +46,9 @@ class LaboratorioControlador{
         }
     }
 
-    public function editar($id, $nombre, $descripcion, $estado) {
+    public function editar($id, $nombre, $descripcion, $estado,$inventario) {
         $laboratorio = new Laboratorio();
-        $resultado = $laboratorio->actualizar($id, $nombre, $descripcion,$estado);
+        $resultado = $laboratorio->actualizar($id, $nombre, $descripcion,$estado, $inventario);
         if ($resultado) {
             echo "Se edito con Exito el Campo";
         } else {

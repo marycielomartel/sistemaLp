@@ -4,9 +4,9 @@
     header("location: login.php");
   }
   if($_SESSION["rol"]!="administrador"){
-  header("location: bienvenido.php");
+  header("location: index.php");
 }
-include_once("layout/Header.php");
+
 
 ?>
 <?php

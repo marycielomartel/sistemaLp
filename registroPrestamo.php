@@ -5,11 +5,11 @@
     exit; 
   }
   if($_SESSION["rol"]!="alumno"){
-  header("location: bienvenido.php");
+  header("location: index.php");
   exit;
 
 }
-include_once("layout/Header.php");
+
 
 ?>
 <?php

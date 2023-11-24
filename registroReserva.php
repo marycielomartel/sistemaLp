@@ -5,9 +5,9 @@ if (!isset($_SESSION["usuario"])) {
     header("location: login.php");
 }
 if ($_SESSION["rol"] != "alumno") {
-    header("location: bienvenido.php");
+    header("location: index.php");
 }
-include_once("layout/Header.php");
+
 ?>
 <?php
 require_once "Controladores/ReservaControlador.php";

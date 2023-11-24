@@ -6,6 +6,7 @@ $id = "";
 $nombre = "";
 $descripcion = "";
 $estado = "";
+$inventario = "";
 
 
 if (isset($_GET['id'])) {
@@ -20,8 +21,9 @@ if (isset($_GET['id'])) {
         $nombre = $laboratorioData['nombre'];
         $descripcion = $laboratorioData['descripcion'];
         $estado = $laboratorioData['estado'];
+        $inventario = $laboratorioData['inventario'];
     } else {
-        echo "La escuela no existe o no se puede editar.";
+        echo "El laboratorio no existe o no se puede editar.";
         exit;
     }
 }
@@ -31,9 +33,10 @@ if (isset($_POST['enviar'])) {
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     $estado = $_POST['estado'];
+    $inventario = $_POST['inventario'];
 
     $laboratorioControlador = new LaboratorioControlador();
-    $resultado = $laboratorioControlador->editar($id, $nombre, $descripcion, $estado);
+    $resultado = $laboratorioControlador->editar($id, $nombre, $descripcion, $estado, $inventario);
 
     
 }
@@ -52,6 +55,7 @@ if (isset($_POST['enviar'])) {
         <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>"><br>
         <input type="text" name="descripcion" value="<?php echo $descripcion; ?>"><br>
         <input type="text" name="estado" value="<?php echo $estado; ?>"><br>
+        <input type="text" name="inventario" value="<?php echo $inventario; ?>"><br>
         <input type="submit" name="enviar" value="Actualizar"><br> 
         
         <a href="mostrarLaboratorio.php">Regresar</a>
