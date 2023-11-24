@@ -1,18 +1,20 @@
 <?php
- require_once("Controladores/InventarioControlador.php");
+  require_once("Controladores/InventarioControlador.php");
   session_start();
   if(!isset($_SESSION["usuario"])){
     header("location: login.php");
   }
-  if($_SESSION["tipo"]!="administrador"){
+  if($_SESSION["rol"]!="administrador"){
   header("location: bienvenido.php");
 }
-  
-  if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $inventarioControlador = new InventarioControlador();
-    $inventarioControlador->eliminar($id);
-  }
+
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
+  $inventarioControlador = new InventarioControlador();
+  $inventarioControlador->eliminar($id);
+}
+include_once("layout/Header.php");
+
 ?>
 
 <h1>Inventario</h1>

@@ -77,4 +77,13 @@ class Prestamo{
 
         return $resultado;
     }
+    public function traerEquipo(){
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+        $sql2 = "SELECT id, nombre FROM equipo";
+        $resultado = $conexion->query($sql2);
+        $conn->cerrar();
+    
+        return $resultado;
+    }
 }
