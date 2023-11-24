@@ -1,4 +1,5 @@
 <?php
+  require_once("Controladores/InventarioControlador.php");
   session_start();
   if(!isset($_SESSION["usuario"])){
     header("location: login.php");
@@ -7,10 +8,15 @@
   header("location: bienvenido.php");
 }
 
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
+  $inventarioControlador = new InventarioControlador();
+  $inventarioControlador->eliminar($id);
+}
+include_once("layout/Header.php");
+
 ?>
-<?php
-    require_once("Controladores/InventarioControlador.php");
-?>
+
 <h1>Inventario</h1>
 <table border=1>
     <tr>
