@@ -12,8 +12,6 @@
     <h1 class="m-0">Hola, bienvenido <?php echo $_SESSION["usuario"]; ?></h1>
     <a class="btn btn-outline-danger" href="logout.php">Salir</a>
 </div>
-
-
    <head>
       <!-- basic -->
       <meta charset="utf-8">

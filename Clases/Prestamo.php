@@ -8,8 +8,6 @@ class Prestamo{
     public $fechaInicio;
     public $fechaDevolucion;
     public $observaciones;
-    
-
 
     
     public function getIdEquipo(){
@@ -77,6 +75,7 @@ class Prestamo{
 
         return $resultado;
     }
+
     public function traerEquipo(){
         $conn = new Conn();
         $conexion = $conn->conectar();
@@ -86,4 +85,17 @@ class Prestamo{
     
         return $resultado;
     }
+
+    public function traerUsuario(){
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+        $sql = "SELECT id, nombre FROM usuario";
+        $resultado = $conexion->query($sql);
+        $conn->cerrar();
+        
+        return $resultado;
+    }
+
+    
 }
+   

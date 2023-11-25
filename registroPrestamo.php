@@ -25,9 +25,34 @@
         $observaciones = $_POST["observaciones"];
         
         echo $pre->guardar($estado, $idEquipo, $idUsuario, $fechaInicio, $fechaDevolucion, $observaciones);
+        $mensaje = $pre->guardar($estado, $idEquipo, $idUsuario, $fechaInicio, $fechaDevolucion, $observaciones);
+
+
+        if ($mensaje === "Prestamo registrado") {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Éxito',
+                        text: 'Prestamo registrado',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        // Redirige a otra página o realiza otras acciones si es necesario
+                        window.location.href = 'mostrarPrestamo.php';
+                    });
+                  </script>";
+        } else {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Error al registrar el equipo',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                  </script>";
+        }
     }
   ?>
-<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
+<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>"> 
     <input type="number" name="idUsuario" placeholder="Ingrese el id de usuario"/><br>
     <select name="idEquipo" id="" require>
     <option value="">Selecciona un Equipo</option>
@@ -42,3 +67,5 @@
     <input type="text" name="observaciones" placeholder="Ingrese las observaciones"/><br>
     <input type="submit" value="Guardar Prestamo"/><br>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

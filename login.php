@@ -43,7 +43,7 @@ if (!empty($_POST)) {
         session_start(); 
         $_SESSION["usuario"]= $usuario;
         $_SESSION["idUsuario"] = $id;
-        $_SESSION["rol"] = 'alumno';
+        $_SESSION["rol"] = 'administrador';
         header("location: index.php");
         exit();  
     }

@@ -30,4 +30,6 @@ class Usuario{
     
         return $resultado;
     }
+    
+   
 }

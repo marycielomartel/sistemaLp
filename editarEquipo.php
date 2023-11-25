@@ -5,6 +5,7 @@ include_once("Controladores/equipoControlador.php");
 $id = "";
 $nombre = "";
 $descripcion = "";
+$cantidad = "";
 $estado = "";
 
 
@@ -19,6 +20,7 @@ if (isset($_GET['id'])) {
     if ($equipoData) {
         $nombre = $equipoData['nombre'];
         $descripcion = $equipoData['descripcion'];
+        $cantidad = $equipoData['cantidad'];
         $estado = $equipoData['estado'];
     } else {
         echo "El equipo no existe o no se puede editar.";
@@ -30,10 +32,11 @@ if (isset($_POST['enviar'])) {
     $id = $_POST['id'];
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
+    $cantidad = $_POST['cantidad'];
     $estado = $_POST['estado'];
 
     $equipoControlador = new EquipoControlador();
-    $resultado = $equipoControlador->editar($id, $nombre, $descripcion, $estado);
+    $resultado = $equipoControlador->editar($id, $nombre, $descripcion, $cantidad, $estado);
 
     
 }
@@ -51,6 +54,7 @@ if (isset($_POST['enviar'])) {
 
         <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>"><br>
         <input type="text" name="descripcion" value="<?php echo $descripcion; ?>"><br>
+        <input type="text" name="cantidad" value="<?php echo $cantidad; ?>"><br>
         <input type="text" name="estado" value="<?php echo $estado; ?>"><br>
         <input type="submit" name="enviar" value="Actualizar"><br> 
         

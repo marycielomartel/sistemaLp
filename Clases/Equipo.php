@@ -5,6 +5,7 @@ class Equipo{
     public $id;
     public $nombre;
     public $descripcion;
+    public $cantidad;
     public $estado;
    
 
@@ -25,6 +26,14 @@ class Equipo{
         $this->descripcion = $descripcion;
     }
 
+    public function getCantidad(){
+        return $this->cantidad;
+    }
+
+    public function setCantidad(int $cantidad){
+        $this->cantidad = $cantidad;
+    }
+
     public function getEstado(){
         return $this->descripcion;
     }
@@ -34,10 +43,10 @@ class Equipo{
     }
 
   
-    public function guardar(String $nombre, String $descripcion, String $estado){
+    public function guardar(String $nombre, String $descripcion, int $cantidad, String $estado){
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql2 = "INSERT INTO equipo(nombre, descripcion, estado) VALUES ('$nombre', '$descripcion', '$estado')";
+        $sql2 = "INSERT INTO equipo(nombre, descripcion, cantidad, estado) VALUES ('$nombre', '$descripcion','$cantidad','$estado')";
         $resultado = $conexion->exec($sql2);
         $conn->cerrar();
     
@@ -67,14 +76,15 @@ class Equipo{
         return $equipoData; 
     }
     
-        public function actualizar($id, $nombre, $descripcion,$estado){
+        public function actualizar($id, $nombre, $descripcion, $cantidad, $estado){
             $conn = new Conn();
             $conexion = $conn->conectar();
-            $sql = "UPDATE equipo SET nombre = :nombre, descripcion = :descripcion, estado = :estado  WHERE id = :id";
+            $sql = "UPDATE equipo SET nombre = :nombre, descripcion = :descripcion,  cantidad = :cantidad, estado = :estado  WHERE id = :id";
             $stmt = $conexion->prepare($sql);
             $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
             $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
             $stmt->bindParam(':estado', $estado, PDO::PARAM_STR);
+            $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_STR);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $resultado = $stmt->execute();
             $conn->cerrar();
