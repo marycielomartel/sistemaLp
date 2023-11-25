@@ -28,4 +28,41 @@ class EquipoControlador{
         $equipo = new Equipo();
         return $equipo->traerTodo();        
     }
+
+    public function obtenerId($id) {
+   
+        $equipo = new Equipo();
+        $equipoData = $equipo->obtenerdatosId($id);
+    
+     
+        if ($equipoData) {
+            return $equipoData; 
+        } else {
+            return null; 
+        }
+    }
+
+    public function editar($id, $nombre, $descripcion, $estado) {
+        $equipo = new Equipo();
+        $resultado = $equipo->actualizar($id, $nombre, $descripcion,$estado);
+        if ($resultado) {
+            echo "Se edito con Exito el Campo";
+            header("location: mostrarEquipo.php");
+        } else {
+            echo "Error";
+        }
+    }
+
+    public function eliminar($id){
+        $equipo = new Equipo();
+        $resultado=$equipo->eliminar($id);
+        if($resultado!=0){
+            echo "Equipo Eliminado";
+        }else{
+            echo "Error";
+        }
+
+    }
+
+
 }

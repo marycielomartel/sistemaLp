@@ -38,4 +38,8 @@ class PrestamoControlador{
         $prestamo = new Prestamo();
         return $prestamo->traerTodo();        
     }
+    public function mostrarEquipo(){
+        $equipo = new Prestamo();
+        return $equipo->traerEquipo();        
+    }
 }

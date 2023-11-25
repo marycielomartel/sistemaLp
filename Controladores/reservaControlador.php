@@ -45,4 +45,8 @@ class ReservaControlador{
         }
 
     }
+    public function mostrarLab(){
+        $laboratorio = new Reserva();
+        return $laboratorio->traerLab();        
+    }
 }
