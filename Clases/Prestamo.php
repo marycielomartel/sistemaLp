@@ -69,7 +69,10 @@ class Prestamo{
     public function traerTodo() {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql = "SELECT * FROM prestamo";
+        $sql = "SELECT p.*, e.nombre as nombreEquipo, u.username as nombreUsuario
+        FROM prestamo p
+        JOIN equipo e ON p.idEquipo = e.id
+        JOIN usuario u ON p.idUsuario = u.id;";
         $resultado = $conexion->query($sql);
         $conn->cerrar();
 
@@ -79,7 +82,7 @@ class Prestamo{
     public function traerEquipo(){
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql2 = "SELECT id, nombre FROM equipo";
+        $sql2 = "SELECT id, nombre FROM equipo where estado = 'Disponible'";
         $resultado = $conexion->query($sql2);
         $conn->cerrar();
     
@@ -94,7 +97,7 @@ class Prestamo{
         $conn->cerrar();
         
         return $resultado;
-    }
+    } 
 
     
 }

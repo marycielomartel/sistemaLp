@@ -72,7 +72,10 @@ class Reserva{
     public function traerTodo(){
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql2 = "SELECT * FROM reserva";
+        $sql2 = "SELECT r.*, l.nombre as nombreLaboratorio, u.username as nombreUsuario
+        FROM reserva r
+        JOIN laboratorio l ON r.idLaboratorio = l.id
+        JOIN usuario u ON r.idUsuario = u.id";
         $resultado = $conexion->query($sql2);
         $conn->cerrar();
     
@@ -94,7 +97,7 @@ class Reserva{
     public function traerLab(){
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql2 = "SELECT id, nombre FROM laboratorio";
+        $sql2 = "SELECT id, nombre FROM laboratorio where estado = 'Disponible'";
         $resultado = $conexion->query($sql2);
         $conn->cerrar();
     

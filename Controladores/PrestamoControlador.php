@@ -49,7 +49,5 @@ class PrestamoControlador{
         return $prestamo->traerUsuarios();
     }
 
-   
-
 
 }
