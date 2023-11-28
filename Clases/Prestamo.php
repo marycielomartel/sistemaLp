@@ -8,8 +8,6 @@ class Prestamo{
     public $fechaInicio;
     public $fechaDevolucion;
     public $observaciones;
-    
-
 
     
     public function getIdEquipo(){
@@ -71,19 +69,36 @@ class Prestamo{
     public function traerTodo() {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql = "SELECT * FROM prestamo";
+        $sql = "SELECT p.*, e.nombre as nombreEquipo, u.username as nombreUsuario
+        FROM prestamo p
+        JOIN equipo e ON p.idEquipo = e.id
+        JOIN usuario u ON p.idUsuario = u.id;";
         $resultado = $conexion->query($sql);
         $conn->cerrar();
 
         return $resultado;
     }
+
     public function traerEquipo(){
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql2 = "SELECT id, nombre FROM equipo";
+        $sql2 = "SELECT id, nombre FROM equipo where estado = 'Disponible'";
         $resultado = $conexion->query($sql2);
         $conn->cerrar();
     
         return $resultado;
     }
+
+    public function traerUsuario(){
+        $conn = new Conn();
+        $conexion = $conn->conectar();
+        $sql = "SELECT id, nombre FROM usuario";
+        $resultado = $conexion->query($sql);
+        $conn->cerrar();
+        
+        return $resultado;
+    } 
+
+    
 }
+   

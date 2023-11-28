@@ -64,11 +64,12 @@ class UsuarioControlador{
         foreach($resultado as $user){
             $username = $user["username"];
             $password = $user["contraseña"];
-            $id = $user["id"];
-            $rol = $user["rol"];
+            $id=$user["id"];
+            $rol=$user["rol"];
         }
         if(isset($username)){
             if(password_verify($contraseña, $password)){
+                
                 $respuesta = "ok";
             }else{
                 $respuesta = "Usuario y/o contraseña no coincide";

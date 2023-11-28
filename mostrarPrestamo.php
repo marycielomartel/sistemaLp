@@ -209,8 +209,8 @@
         $prestamos = $prestamoControlador->mostrar();
         foreach($prestamos as $prestamo){
             echo "<tr>
-                    <td>".$prestamo["idUsuario"]."</td>
-                    <td>".$prestamo["idEquipo"]."</td>
+                    <td>".$prestamo["nombreUsuario"]."</td>
+                    <td>".$prestamo["nombreEquipo"]."</td>
                     <td>".$prestamo["estado"]."</td>
                     <td>".$prestamo["fechaInicio"]."</td>
                     <td>".$prestamo["fechaDevolucion"]."</td>

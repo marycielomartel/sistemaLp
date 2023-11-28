@@ -199,6 +199,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Descripción</th>
+                        <th>Cantidad</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -211,6 +212,7 @@
                         echo "<tr>
                                 <td>".$equipo["nombre"]."</td>
                                 <td>".$equipo["descripcion"]."</td>
+                                <td>".$equipo["cantidad"]."</td>
                                 <td>".$equipo["estado"]."</td>
                                 <td class='actions'>";
 

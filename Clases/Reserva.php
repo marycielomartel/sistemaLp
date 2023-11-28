@@ -97,7 +97,7 @@ class Reserva{
     public function traerLab(){
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql2 = "SELECT id, nombre FROM laboratorio";
+        $sql2 = "SELECT id, nombre FROM laboratorio where estado = 'Disponible'";
         $resultado = $conexion->query($sql2);
         $conn->cerrar();
     

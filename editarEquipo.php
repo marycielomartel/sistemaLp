@@ -2,16 +2,10 @@
 include_once("Controladores/equipoControlador.php");
 
 session_start();
-if (!isset($_SESSION["usuario"])) {
-    header("location: login.php");
-}
-if ($_SESSION["rol"] != "administrador") {
-    header("location: index.php");
-}
-
 $id = "";
 $nombre = "";
 $descripcion = "";
+$cantidad = "";
 $estado = "";
 
 
@@ -26,8 +20,8 @@ if (isset($_GET['id'])) {
     if ($equipoData) {
         $nombre = $equipoData['nombre'];
         $descripcion = $equipoData['descripcion'];
+        $cantidad = $equipoData['cantidad'];
         $estado = $equipoData['estado'];
-        $inventario = $equipoData['inventario'];
     } else {
         echo "El equipo no existe o no se puede editar.";
         exit;
@@ -38,10 +32,13 @@ if (isset($_POST['enviar'])) {
     $id = $_POST['id'];
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
+    $cantidad = $_POST['cantidad'];
     $estado = $_POST['estado'];
 
     $equipoControlador = new EquipoControlador();
-    $resultado = $equipoControlador->editar($id, $nombre, $descripcion, $estado);
+    $resultado = $equipoControlador->editar($id, $nombre, $descripcion, $cantidad, $estado);
+
+    
 }
 ?>
 <!DOCTYPE html>
@@ -73,7 +70,8 @@ if (isset($_POST['enviar'])) {
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -239,20 +237,26 @@ if (isset($_POST['enviar'])) {
             margin-bottom: 30px;
         }
     </style>
-
-
-
+</head>
+<body>
 
     <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-        <h1 class="text-center">Editar Equipo</h1>
+    <h1 class="text-center">Editar Equipo</h1>
         <input type="hidden" name="id" value="<?php echo $id; ?>">
 
         <input type="text" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>"><br>
         <input type="text" name="descripcion" value="<?php echo $descripcion; ?>"><br>
-        <input type="text" name="estado" value="<?php echo $estado; ?>"><br>
-        <input type="submit" name="enviar" value="Actualizar"><br>
+        <input type="text" name="cantidad" value="<?php echo $cantidad; ?>"><br>
+        <select class="form-select" name="estado" aria-label="Default select example" require>
+        <option selected value="<?php echo $estado; ?>"><?php echo $estado; ?></option>
+        <option value="Disponible">Disponible</option>
+        <option value="Ocupado">Ocupado</option>
+        </select><br>
+        <input type="submit" name="enviar" value="Actualizar"><br> 
+        
+        <a href="mostrarEquipo.php">Regresar</a>
     </form>
-</body>
+    </body>
 
 <!--  footer -->
 <footer>

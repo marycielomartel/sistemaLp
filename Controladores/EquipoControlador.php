@@ -2,7 +2,7 @@
 require_once("Clases/Equipo.php");
 
 class EquipoControlador{
-    public function guardar(String $nombre, String $descripcion, String $estado): String{
+    public function guardar(String $nombre, String $descripcion, int $cantidad, String $estado): String{
         $respuesta="";
         if(trim($nombre)==""){
             $respuesta.="Complete el campo de nombre<br>";
@@ -14,11 +14,21 @@ class EquipoControlador{
             $respuesta.="Complete el campo de estado<br>";
         } 
 
+        if(trim($cantidad)==""){
+            $respuesta.="Complete el campo de cantidad<br>";
+        } 
+
         $equipo = new Equipo();
 
-        if($equipo->guardar($nombre, $descripcion, $estado)>0){
-            $respuesta = "Equipo registrado";
-        } 
+        if (empty($respuesta)) {
+            $equipo = new Equipo();
+
+            if ($equipo->guardar($nombre, $descripcion, $cantidad, $estado) > 0) {
+                $respuesta = "Equipo Registrado Correctamente"; 
+            } else {
+                $respuesta = "Error al registrar el equipo";
+            }
+        }
 
         return $respuesta;
        
@@ -42,9 +52,9 @@ class EquipoControlador{
         }
     }
 
-    public function editar($id, $nombre, $descripcion, $estado) {
+    public function editar($id, $nombre, $descripcion, $cantidad, $estado) {
         $equipo = new Equipo();
-        $resultado = $equipo->actualizar($id, $nombre, $descripcion,$estado);
+        $resultado = $equipo->actualizar($id, $nombre, $descripcion, $cantidad, $estado);
         if ($resultado) {
             echo "Se edito con Exito el Campo";
             header("location: mostrarEquipo.php");
@@ -57,7 +67,7 @@ class EquipoControlador{
         $equipo = new Equipo();
         $resultado=$equipo->eliminar($id);
         if($resultado!=0){
-            echo "Equipo Eliminado";
+            echo "";
         }else{
             echo "Error";
         }

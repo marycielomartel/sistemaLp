@@ -108,11 +108,11 @@ class Laboratorio{
             return $resultado;
     
     
-        }
+        } 
         public function obtenerNomLab($idLaboratorio){
             $conn = new Conn();
             $conexion = $conn->conectar();
-            $sql2 = "SELECT nombre FROM laboratorio WHERE id = $idLaboratorio";
+            $sql2 = "SELECT nombre FROM laboratorio WHERE id = $idLaboratorio;";
             $resultado = $conexion->query($sql2);
             $conn->cerrar();
            

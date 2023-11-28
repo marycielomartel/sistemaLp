@@ -25,13 +25,14 @@ class PrestamoControlador{
         } 
 
         $prestamo = new Prestamo();
-
-        if($prestamo->guardar( $estado, $idEquipo, $idUsuario, $fechaInicio, $fechaDevolucion, $observaciones )>0){
-            $respuesta = "Prestamo Registrado";
-        } 
-
+             
+            if ($prestamo->guardar($estado, $idEquipo, $idUsuario, $fechaInicio, $fechaDevolucion, $observaciones) > 0) {
+                $respuesta = "Prestamo registrado";
+            } else {
+                $respuesta = "Error al registrar el préstamo";
+            }
+    
         return $respuesta;
-       
     }
 
     public function mostrar(){
@@ -42,4 +43,13 @@ class PrestamoControlador{
         $equipo = new Prestamo();
         return $equipo->traerEquipo();        
     }
+
+    public function mostrarUsuarios() {
+        $prestamo = new Prestamo();
+        return $prestamo->traerUsuarios();
+    }
+
+   
+
+
 }
